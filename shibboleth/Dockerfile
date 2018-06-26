@@ -6,6 +6,7 @@ RUN mkdir /dists
 WORKDIR dists
 
 # fetch jetty and shibboleth
+RUN apt-get update && apt-get install -y apt-transport-https
 RUN  apt-get install -qqy wget vim
 ADD ./fetch-binaries.sh fetch-binaries.sh
 RUN ./fetch-binaries.sh
