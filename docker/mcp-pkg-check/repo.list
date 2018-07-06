@@ -1,0 +1,27 @@
+# Ocata on apt.mirantis.com
+deb http://apt.mirantis.com/xenial/openstack/ocata nightly main
+deb http://apt.mirantis.com/xenial/openstack/ocata testing main
+deb http://apt.mirantis.com/xenial/openstack/ocata proposed main
+deb http://apt.mirantis.com/xenial/openstack/ocata stable main
+deb http://apt.mirantis.com/xenial/openstack/ocata 2018.4.0 main
+
+# Pike on apt.mirantis.com
+deb http://apt.mirantis.com/xenial/openstack/pike nightly main
+deb http://apt.mirantis.com/xenial/openstack/pike testing main
+deb http://apt.mirantis.com/xenial/openstack/pike proposed main
+deb http://apt.mirantis.com/xenial/openstack/pike stable main
+deb http://apt.mirantis.com/xenial/openstack/pike 2018.4.0 main
+
+# Pike on mirror.mirantis.com
+deb http://mirror.mirantis.com/nightly/openstack-pike/xenial xenial main
+deb http://mirror.mirantis.com/testing/openstack-pike/xenial xenial main
+deb http://mirror.mirantis.com/proposed/openstack-pike/xenial xenial main
+deb http://mirror.mirantis.com/stable/openstack-pike/xenial xenial main
+deb http://mirror.mirantis.com/2018.4.0/openstack-pike/xenial xenial main
+
+# Queens on mirror.mirantis.com
+deb http://mirror.mirantis.com/nightly/openstack-queens/xenial xenial main
+deb http://mirror.mirantis.com/testing/openstack-queens/xenial xenial main
+deb http://mirror.mirantis.com/proposed/openstack-queens/xenial xenial main
+deb http://mirror.mirantis.com/stable/openstack-queens/xenial xenial main
+deb http://mirror.mirantis.com/2018.4.0/openstack-queens/xenial xenial main
