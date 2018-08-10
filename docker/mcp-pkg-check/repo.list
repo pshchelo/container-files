@@ -1,3 +1,19 @@
+# Salt-formulas
+
+# Mitaka
+deb http://apt.mirantis.com/xenial/openstack/mitaka nightly main
+deb http://apt.mirantis.com/xenial/openstack/mitaka testing main
+deb http://apt.mirantis.com/xenial/openstack/mitaka proposed main
+deb http://apt.mirantis.com/xenial/openstack/mitaka stable main
+deb http://apt.mirantis.com/xenial/openstack/mitaka 2018.4.0 main
+
+# Newton
+deb http://apt.mirantis.com/xenial/openstack/newton nightly main
+deb http://apt.mirantis.com/xenial/openstack/newton testing main
+deb http://apt.mirantis.com/xenial/openstack/newton proposed main
+deb http://apt.mirantis.com/xenial/openstack/newton stable main
+deb http://apt.mirantis.com/xenial/openstack/newton 2018.4.0 main
+
 # Ocata on apt.mirantis.com
 deb http://apt.mirantis.com/xenial/openstack/ocata nightly main
 deb http://apt.mirantis.com/xenial/openstack/ocata testing main
