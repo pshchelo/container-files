@@ -1,0 +1,81 @@
+version: "2"
+
+networks:
+  openstack:
+     driver: bridge
+     ipam:
+       driver: default
+       config:
+          - subnet: 192.168.200.0/24
+services:
+
+  database:
+    image: mysql:5.7
+    container_name: database
+    networks:
+      openstack:
+        ipv4_address: 192.168.200.3
+    environment:
+      MYSQL_ROOT_PASSWORD: r00tme
+      MYSQL_DATABASE: keystone
+      MYSQL_USER: keystone
+      MYSQL_PASSWORD: r00tme
+
+  idp:
+    build: ./shibboleth
+    container_name: idp
+    hostname: idp
+    entrypoint: java -Didp.home=/opt/shibboleth-idp -Djetty.base=/opt/shibboleth-idp/jetty-base -Djetty.logs=/opt/shibboleth-idp/jetty-base/logs -jar /dists/jetty/start.jar
+    # entrypoint: tail -f /var/log/bootstrap.log
+    # network_mode: host
+    networks:
+      openstack:
+        ipv4_address: 192.168.200.4
+    extra_hosts:
+      - "ldap:192.168.200.2"
+    ports:
+      - "443:8443"
+    depends_on:
+      - ldap
+
+  ldap:
+     image: osixia/openldap:1.1.8
+     container_name: ldap
+     hostname: ldap
+     networks:
+       openstack:
+         ipv4_address: 192.168.200.2
+     environment:
+       LDAP_ORGANISATION: Openstack
+       LDAP_DOMAIN: openstack.com
+       LDAP_ADMIN_PASSWORD: r00tme
+
+  phpldapadmin:
+     image: osixia/phpldapadmin
+     hostname: phpldapadmin
+     container_name: phpldapadmin
+     networks:
+       openstack:
+         ipv4_address: 192.168.200.5
+     environment:
+       PHPLDAPADMIN_LDAP_HOSTS: ldap
+       PHPLDAPADMIN_HTTPS: "false"
+
+  keystone:
+    ports:
+      - "5000:5000"
+    build:
+      context: ./keystone
+      args:
+        keystone_version: master
+    environment:
+      bootstrap: 1
+    container_name: keystone
+    hostname: keystone
+    networks:
+      openstack:
+        ipv4_address: 192.168.200.6
+    depends_on:
+      - database
+      - ldap
+      - idp
