@@ -2,9 +2,6 @@
   {
     "remote": [
       {
-        "type": "cn"
-      },
-      {
         "type": "cn",
         "whitelist":["kb"]
       },
@@ -17,6 +14,9 @@
         "user": {
           "name":  "{0}",
           "email": "{1}"
+        },
+        "group": {
+            "name": "federated_users"
         }
       }
     ]
